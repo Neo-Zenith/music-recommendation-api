@@ -8,7 +8,7 @@ require("dotenv").config();
 mongoose.connect(
     "mongodb+srv://Neo-Zenith:" +
         process.env.MONGODB_PW +
-        "@music-recommendation-db.gdyksx9.mongodb.net/?retryWrites=true&w=majority"
+        "@music-recommendation-db.gdyksx9.mongodb.net/music-recommendation?retryWrites=true&w=majority"
 );
 
 const server = http.createServer(app);
