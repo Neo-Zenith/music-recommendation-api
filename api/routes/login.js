@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const generateToken = require("../middleware/authentication/auth-generate-token");
-const verifyPassword = require("../middleware/handler/verifyPassword");
-
-const Account = require("../model/accounts");
+const { verifyPassword } = require("../middleware/authentication");
+const { generateAccessToken } = require("../middleware/authorization");
+const Account = require("../model/Account");
 
 router.post("/", async (req, res, next) => {
     const username = req.body.username;
@@ -21,7 +20,7 @@ router.post("/", async (req, res, next) => {
         const isValid = await verifyPassword(password, user.password);
 
         if (isValid) {
-            const token = generateToken(username);
+            const token = generateAccessToken(username);
             res.status(200).json({
                 token: token,
                 username: username,

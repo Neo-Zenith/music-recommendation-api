@@ -1,15 +1,12 @@
-const Account = require("../../model/accounts");
+const {
+    isStrongPassword,
+    hashPassword,
+} = require("../../middleware/authentication");
+const Account = require("../../model/Account");
 
-const hashPassword = require("../handler/hashPassword");
-const isStrongPassword = require("../handler/isStrongPassword");
-const generateToken = require("../../middleware/authentication/auth-generate-token");
+const { generateToken } = require("../../middleware/authorization");
 
-module.exports = async function handleAccountUpdate(
-    user,
-    username,
-    password,
-    name
-) {
+async function put(user, username, password, name) {
     const existingUser = await Account.find({ username: username });
     // 2nd condition ensures we are not checking ourselves
     if (existingUser.length != 0 && user.username != username) {
@@ -29,4 +26,6 @@ module.exports = async function handleAccountUpdate(
     } else {
         return 0;
     }
-};
+}
+
+module.exports = put;

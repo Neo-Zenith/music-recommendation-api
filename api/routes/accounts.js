@@ -1,39 +1,39 @@
 const express = require("express");
-const router = express.Router();
+const router = express();
 
-const verifyToken = require("../middleware/authentication/auth-verify-token");
-const handleAccountUpdate = require("../middleware/handler/handleAccountUpdate");
+const put = require("../controller/accounts/put");
+const { authenticateToken } = require("../middleware/authorization");
 
-const Account = require("../model/accounts");
+const Account = require("../model/Account");
+const Playlist = require("../model/Playlist");
 
-router.get("/:username", verifyToken, async (req, res, next) => {
+router.get("/:username", authenticateToken, async (req, res, next) => {
     const queryUsername = req.params.username;
     if (queryUsername != req.user.username) {
         res.sendStatus(403);
     } else {
         let user = (await Account.find({ username: req.user.username }))[0];
+        let playlists = await Playlist.find({ owner: user.id });
         const maskedUser = {
             ...user.toObject(),
             password: undefined,
             __v: undefined,
         };
-        res.status(200).json(maskedUser);
+        res.status(200).json({
+            user: maskedUser,
+            playlists: playlists,
+        });
     }
 });
 
-router.put("/:username", verifyToken, async (req, res, next) => {
+router.put("/:username", authenticateToken, async (req, res, next) => {
     const newUsername = req.body.newUsername;
     const newPassword = req.body.newPassword;
     const newName = req.body.newName;
     const username = req.params.username;
 
     const user = (await Account.find({ username: username }))[0];
-    const update = await handleAccountUpdate(
-        user,
-        newUsername,
-        newPassword,
-        newName
-    );
+    const update = await put(user, newUsername, newPassword, newName);
 
     switch (update) {
         case -1:
