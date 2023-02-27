@@ -1,0 +1,45 @@
+/*
+    use 'Lato' for font-family
+*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/*
+    use 'Bona Nova' for font-family
+*/
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+/*
+    use 'Inter' for font-family
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/*
+    use 'Noto Sans Mono' for font-family
+*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    font-size: 62.5%;
+    overflow-x: hidden;
+
+    --color--primary-green: #156454;
+    --color--secondary-green: #1c977c;
+    --color--tertiary-green: #08daa9;
+
+    --color-white: #fbfffc;
+    --color-black: #100c0c;
+
+    --color-dark-greyed-option: rgb(85, 85, 85);
+    --color-greyed-option: rgb(209, 208, 208);
+    --color-error: rgb(126, 0, 0);
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    font-size: 1.6rem;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}

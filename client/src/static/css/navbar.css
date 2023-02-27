@@ -1,0 +1,86 @@
+.navbar-container {
+    background-color: var(--color-white);
+    box-shadow: 0px 11px 20px -10px rgba(0,0,0,0.3);
+    display: flex;
+    width: 100%;
+    height: 8rem;
+}
+
+.navbar-logo {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-logo img {
+    width: 5rem;
+    height: auto;
+}
+
+.navbar-links {
+    width: 80%;
+    height: 100%;
+}
+
+.main-links {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.main-links li {
+    width: 20%;
+    height: 100%;
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.main-links li a {
+    height: 100%;
+    text-decoration: none;
+    text-align: center;
+    font: 500 2rem 'Inter';
+    padding-bottom: 0.5rem;
+    color: var(--color-black)
+}
+
+.main-links li a:hover {
+    color: var(--color--secondary-green);
+}
+
+.main-links li a.active {
+    color: var(--color--secondary-green);
+    border-bottom: 0.3rem solid var(--color--secondary-green);
+}
+
+.dropdown-links {
+    background-color: var(--color-white);
+    box-shadow: 0px 11px 20px -10px rgba(0,0,0,0.3);
+    width: 70%;
+    height: 10rem;
+    margin-top: 2.5rem;
+    margin-left: -1.5rem;
+    padding-top: 2rem;
+    padding-left: 2.5rem;
+}
+
+.dropdown-links li {
+    width: 100%;
+    margin-top: 0.1rem;
+    margin-bottom: 1.5rem;
+    height: 33%;
+}
+
+.dropdown-links li a {
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-bottom: 0rem;
+    border-left: 0.3rem solid transparent;
+}
+
+.dropdown-links li:hover a {
+    color: var(--color--secondary-green);
+    border-left: 0.3rem solid var(--color--secondary-green);
+}
